@@ -19,6 +19,13 @@ enum ByuAccountType {
   ServiceAccount
 }
 
+model JwtBlacklist {
+  id  String   @id
+  exp DateTime
+
+  @@index([exp])
+}
+
 model User {
   ///////////////////
   // DO NOT MODIFY //
