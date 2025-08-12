@@ -15,6 +15,7 @@ export class DefaultLayout {
     menu: [
       { text: 'Home', path: '' },
       { text: 'Admin', path: '/admin' },
+      { text: 'Tasks', path: '/tasks' },
     ],
   };
 }
