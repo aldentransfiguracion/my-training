@@ -3,13 +3,14 @@ import { AuthErrorPage, ForbiddenPage, NotFoundPage, ServerErrorPage } from '@fh
 import { HomePage } from './pages/home/home.page';
 import { DefaultLayout } from './layouts/default/default.layout';
 import { AdminPage } from './pages/admin/admin.page';
+import { permissionGuard } from './utils/permission.guard';
 
 export const routes: Routes = [
   {
     path: '',
     component: DefaultLayout,
     children: [
-      { path: 'admin', component: AdminPage },
+      { path: 'admin', component: AdminPage, canActivate: [permissionGuard(['manage-users-full-access'])], },
       { path: 'server-error', component: ServerErrorPage },
       { path: 'forbidden', component: ForbiddenPage },
       { path: 'auth-error', component: AuthErrorPage },

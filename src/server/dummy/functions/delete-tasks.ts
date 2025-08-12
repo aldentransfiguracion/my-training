@@ -8,6 +8,5 @@ export const deleteTasks = makeDummy({
     const count = await prisma.task.count();
     await prisma.task.deleteMany({});
     return `Deleted ${count} tasks`;
-
   },
 });

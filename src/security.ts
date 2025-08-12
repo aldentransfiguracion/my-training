@@ -4,14 +4,14 @@
  * Maps each user role to an array of permissions granted to that role.
  */
 export const ROLE_PERMISSION_MAP: Record<Role, Permission[]> = {
-  admin: ['manage-users-full-access'],
-  user: [],
+  admin: ['manage-users-full-access', 'manage-tasks'],
+  user: ['manage-tasks'],
 };
 
 /**
  * The role given to newly provisioned users.
  */
-export const DEFAULT_ROLE: Role | null = null;
+export const DEFAULT_ROLE: Role | null = 'user';
 
 /**
  * A map specifying to which route the user should
@@ -19,6 +19,7 @@ export const DEFAULT_ROLE: Role | null = null;
  */
 export const DEFAULT_HOME_PAGES: Partial<Record<Role, string>> = {
   admin: '/admin',
+  user: '/',
 };
 
 // -- LISTS --
@@ -26,7 +27,7 @@ export const DEFAULT_HOME_PAGES: Partial<Record<Role, string>> = {
 /**
  * The list of all access permissions, granting access to pages and resources.
  */
-export const PERMISSIONS = ['manage-users-full-access'] as const;
+export const PERMISSIONS = ['manage-users-full-access', 'manage-tasks'] as const;
 
 /**
  * The list of all access roles.
