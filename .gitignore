@@ -44,6 +44,9 @@ testem.log
 .DS_Store
 Thumbs.db
 .env
+
+# Scripts (one-off development scripts)
+/scripts/
 # Playwright
 /e2e/playwright
 /playwright/.cache/

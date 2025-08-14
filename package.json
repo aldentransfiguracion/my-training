@@ -21,7 +21,8 @@
     "e2e:ui": "npx playwright test --ui",
     "e2e:codegen": "npx playwright codegen localhost:4200",
     "e2e:report": "npx playwright show-report e2e/playwright/playwright-report",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "script": "tsx scripts/script.ts"
   },
   "private": true,
   "dependencies": {
