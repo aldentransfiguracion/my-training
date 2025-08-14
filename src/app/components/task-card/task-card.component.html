@@ -1,26 +1,3 @@
-<!-- <mat-card>
-  @if (!editMode()) {
-    <mat-card-content>
-      <h2>{{cardState.value()?.title}}</h2>
-      <p>{{cardState.value()?.description}}</p>
-      <button (click)="editMode.set(true)">Edit</button>
-    </mat-card-content>
-  } @else {
-    <mat-card-content>
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="newTitle" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <input matInput [(ngModel)]="newDescription" />
-      </mat-form-field>
-      <button (click)="saveChanges()">Save</button>
-    </mat-card-content>
-    }
-
-</mat-card> -->
-
 <mat-card class="task-card" appearance="raised">
   @if (editMode()) {
     <mat-card-content>
