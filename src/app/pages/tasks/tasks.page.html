@@ -1,4 +1,4 @@
-<section class="task-list">
+<section class="task-list">  
   <mat-paginator
   [length]="taskResource.value()?.totalCount" 
   [pageSize]="PAGE_SIZE"
@@ -21,9 +21,6 @@
   }
 
   @for (task of taskResource.value()?.data; track task.id) {
-    <div>
-      <h2>{{ task.title }}</h2>
-      <p>{{ task.description }}</p>
-    </div>
+    <task-card [initialTaskValue]="task" />
   }
 </section>
