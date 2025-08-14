@@ -28,4 +28,11 @@ export class TasksPage {
     }),
     { autoRefresh: true }
   );
+
+  deleteTask(taskId: string) {
+    this.trpc.tasks.deleteTask.mutate({
+      taskId: taskId,
+    });
+    this.taskResource.refresh();
+  }
 }

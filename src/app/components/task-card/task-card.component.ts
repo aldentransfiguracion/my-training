@@ -1,4 +1,4 @@
-import { Component, inject, input, linkedSignal, signal, ViewChild } from '@angular/core';
+import { Component, inject, input, linkedSignal, output, signal, ViewChild } from '@angular/core';
 import type { Task } from '../../../../prisma/client';
 import { TRPC_CLIENT } from '../../utils/trpc.client';
 import { trpcResource } from '@fhss-web-team/frontend-utils';
@@ -63,5 +63,10 @@ export class TaskCardComponent {
     this.newDescription.set(this.initialTaskValue().description);
     this.newStatus.set(this.initialTaskValue().status);
     this.editMode.set(false);
+  }
+
+  deleteTaskEvent = output<string>();
+  deleteTask() {
+    this.deleteTaskEvent.emit(this.initialTaskValue().id);
   }
 }

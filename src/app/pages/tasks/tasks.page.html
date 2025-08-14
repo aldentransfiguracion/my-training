@@ -5,8 +5,7 @@
   (page)="handlePageEvent($event)"
   [hidePageSize]="true"
   [showFirstLastButtons]="true" 
-/>
-
+  />
 
   @if (taskResource.error()) {
     <p>Failed to retrieve tasks. Please try again.</p>
@@ -21,6 +20,6 @@
   }
 
   @for (task of taskResource.value()?.data; track task.id) {
-    <task-card [initialTaskValue]="task" />
+    <task-card [initialTaskValue]="task" (deleteTaskEvent)="deleteTask($event)" />
   }
 </section>
