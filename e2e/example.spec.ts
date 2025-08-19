@@ -4,7 +4,7 @@ test('has title', async ({ page }) => {
   await page.goto('/');
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/FhssStarterApp/);
+  await expect(page).toHaveTitle(/To do/);
 
   await expect(page.getByText('The home page is working!')).toBeDefined();
 });

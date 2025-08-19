@@ -45,12 +45,28 @@ export class TasksPage {
   createdDescription = signal('New Task Description');
 
   isCreateTask = signal(false);
-  createTask() {
-    this.trpc.tasks.createTask.mutate({
-      title: this.createdTitle(),
-      description: this.createdDescription(),
-    });
-    this.taskResource.refresh();
-    this.isCreateTask.set(false);
+  async createTask() {
+    // Validate form
+    if (!this.createdTitle().trim() || !this.createdDescription().trim()) {
+      return;
+    }
+
+    try {
+      await this.trpc.tasks.createTask.mutate({
+        title: this.createdTitle(),
+        description: this.createdDescription(),
+      });
+      
+      // Reset form and close
+      this.createdTitle.set('New Task');
+      this.createdDescription.set('New Task Description');
+      this.isCreateTask.set(false);
+      
+      // Refresh task list
+      this.taskResource.refresh();
+    } catch (error) {
+      console.error('Failed to create task:', error);
+      // You could add error handling UI here
+    }
   }
 }

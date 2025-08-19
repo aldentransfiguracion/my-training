@@ -9,8 +9,16 @@
         <mat-label>Description</mat-label>
         <textarea class="description-text-area" matInput [(ngModel)]="newDescription"></textarea>
       </mat-form-field>
-      
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="newStatus.set('Incomplete')">Todo</button>
+        <button mat-menu-item (click)="newStatus.set('InProgress')">In Progress</button>
+        <button mat-menu-item (click)="newStatus.set('Complete')">Done</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="menu" class="status-button">
+        Status: {{ newStatus() }}
+      </button>
     </mat-card-content>
+
     <mat-card-actions class="button-row">
       <button mat-button (click)="cancelChanges()" class="cancel-button">
         Cancel
@@ -31,18 +39,10 @@
   
     <mat-card-content>
       <p>{{taskCardState.value()?.description}}</p>
+      <p>{{taskCardState.value()?.status}}</p>
     </mat-card-content>
 
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="newStatus.set('Incomplete')">Todo</button>
-      <button mat-menu-item (click)="newStatus.set('InProgress')">In Progress</button>
-      <button mat-menu-item (click)="newStatus.set('Complete')">Done</button>
-    </mat-menu>
-
     <mat-card-actions class="button-footer">
-      <button mat-button [matMenuTriggerFor]="menu" class="status-button">
-        Status: {{ newStatus() }}
-      </button>
       <button mat-mini-fab aria-label="edit button" (click)="editMode.set(true)">
         <mat-icon>edit</mat-icon>
       </button>
